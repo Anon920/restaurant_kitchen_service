@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Dish(models.Model):
+class DishType(models.Model):
     name = models.CharField(max_length=100)
 
     class Meta:
