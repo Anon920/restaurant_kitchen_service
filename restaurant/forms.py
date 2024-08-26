@@ -25,7 +25,7 @@ class DishTypeSearchForm(forms.Form):
     )
 
 
-class DishSearchForm(forms.ModelForm):
+class DishSearchForm(forms.Form):
     name = forms.CharField(
         max_length=100,
         required=False,
@@ -34,7 +34,7 @@ class DishSearchForm(forms.ModelForm):
     )
 
 
-class CookCreationForm(forms.ModelForm):
+class CookCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = Cook
         fields = UserCreationForm.Meta.fields + (
@@ -42,6 +42,11 @@ class CookCreationForm(forms.ModelForm):
             "first_name",
             "last_name",
             "email",
+        )
+
+    def clean_years_of_experience(self):
+        return validate_years_of_experience(
+            self.cleaned_data["years_of_experience"]
         )
 
 
