@@ -43,3 +43,32 @@ class CookCreationForm(forms.ModelForm):
             "last_name",
             "email",
         )
+
+
+class CookUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Cook
+        fields = ['years_of_experience']
+
+    def clean_years_of_experience(self):
+        return validate_years_of_experience(
+            self.cleaned_data['years_of_experience']
+        )
+
+
+def validate_years_of_experience(years_of_experience):
+    if years_of_experience < 0:
+        raise forms.ValidationError(
+            "You must enter a positive number"
+        )
+
+    return years_of_experience
+
+
+class CookSearchForm(forms.Form):
+    username = forms.CharField(
+        max_length=100,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={'placeholder': 'Search by username'}),
+    )
