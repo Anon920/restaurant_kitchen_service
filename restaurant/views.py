@@ -108,7 +108,7 @@ class DishDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 def toggle_assign_to_dish(request, pk):
     cook = Cook.objects.get(id=request.user.id)
-    if(
+    if (
         Cook.objects.get(id=pk) in cook.dishes.all()
     ):
         cook.dishes.remove(pk)
