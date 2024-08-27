@@ -18,7 +18,7 @@ urlpatterns = [
     path("cooks/", views.CookListView.as_view(), name='cook-list'),
     path("cook/<int:pk>", views.CookDetailView.as_view(), name='cook-detail'),
     path("cook/create/", views.CookCreateView.as_view(), name='cook-create'),
-    path("cook/update/", views.CookUpdateView.as_view(), name='cook-update'),
+    path("cook/<int:pk>/update/", views.CookUpdateView.as_view(), name='cook-update'),
     path("cook/<int:pk>/delete", views.CookDetailView.as_view(), name='cook-delete'),
 ]
 
