@@ -13,7 +13,7 @@
     <input class="btn btn-secondary" type="submit" value="🔎">
   </form>
 
-  {% if driver_list %}
+  {% if cook_list %}
     <table class="table">
       <tr>
         <th>ID</th>
@@ -22,7 +22,7 @@
         <th>Last name</th>
         <th>License number</th>
       </tr>
-      {% for cook in cook-list %}
+      {% for cook in cook_list %}
         <tr>
           <td>{{ cook.id }}</td>
           <td><a href="{{ cook.get_absolute_url }}">{{ cook.username }} {% if user == cook %} (Me){% endif %}</a>
