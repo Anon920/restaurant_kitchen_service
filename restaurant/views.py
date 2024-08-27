@@ -1,13 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
-from django.test.client.RequestFactory import generic
+from django.views import generic
+from django.urls import reverse_lazy
 
 import restaurant
 from restaurant.forms import DishTypeSearchForm
 from restaurant.models import Cook, Dish, DishType
-
-
-# Create your views here.
 
 
 def index(request):
@@ -48,4 +46,8 @@ class DishTypeListView(LoginRequiredMixin, generic.ListView):
         return queryset
 
 
-
+class DishTypeCreateView(LoginRequiredMixin, generic.CreateView):
+    model = DishType
+    fields = ['__all__',]
+    success_url = reverse_lazy("restaurant:dish_type_list")
+    template_name = 'restaurant/dish_type_create.html'
