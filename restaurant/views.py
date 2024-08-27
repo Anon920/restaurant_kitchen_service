@@ -29,7 +29,7 @@ def index(request):
 
 class DishTypeListView(LoginRequiredMixin, generic.ListView):
     model = DishType
-    context_object_name = 'dish-types'
+    context_object_name = 'dish_type_list'
     template_name = 'restaurant/dish_type_list.html'
     paginate_by = 5
 
