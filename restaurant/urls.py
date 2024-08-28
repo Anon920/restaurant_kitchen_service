@@ -2,12 +2,12 @@ from django.urls import path
 
 from restaurant import views
 from restaurant.views import DishTypeListView, DishListView, DishDetailView, DishCreateView, toggle_assign_to_dish, \
-    DishUpdateView, DishDeleteView, DishTypeUpdateView, DishTypeDeleteView
+    DishUpdateView, DishDeleteView, DishTypeUpdateView, DishTypeDeleteView, DishTypeCreateView
 
 urlpatterns = [
     path('', views.index, name='index'),
     path("dish_types/", DishTypeListView.as_view(), name='dish-type-list'),
-    path("dish_types/create/", DishCreateView.as_view(), name='dish-type-create'),
+    path("dish_types/create/", DishTypeCreateView.as_view(), name='dish-type-create'),
     path("dish_types/<int:pk>/update", DishTypeUpdateView.as_view(), name='dish-type-update'),
     path("dish_types/<int:pk>/delete", DishTypeDeleteView.as_view(), name='dish-type-delete'),
     path("dishes/", DishListView.as_view(), name='dish-list'),
