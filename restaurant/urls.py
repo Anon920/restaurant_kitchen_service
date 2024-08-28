@@ -19,7 +19,7 @@ urlpatterns = [
     path("cook/<int:pk>", views.CookDetailView.as_view(), name='cook-detail'),
     path("cook/create/", views.CookCreateView.as_view(), name='cook-create'),
     path("cook/<int:pk>/update/", views.CookUpdateView.as_view(), name='cook-update'),
-    path("cook/<int:pk>/delete", views.CookDetailView.as_view(), name='cook-delete'),
+    path("cook/<int:pk>/delete", views.CookDeleteView.as_view(), name='cook-delete'),
 ]
 
 app_name = 'restaurant'
