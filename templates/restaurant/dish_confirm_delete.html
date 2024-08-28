@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h3>Delete dish type?</h3>
+  <h3>Delete dish?</h3>
   <form action="" method="post">
     {% csrf_token %}
     <input class="btn btn-danger" type="submit" value="Yes">
-    <a href="{% url 'restaurant:dish-type-list' %}" class="btn btn-secondary my-3">Cancel</a>
+    <a href="{% url 'restaurant:dish-list' %}" class="btn btn-secondary my-3">Cancel</a>
   </form>
 {% endblock %}
