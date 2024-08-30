@@ -1,25 +1,64 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block content %}
 
-  <h1>{{ dish.name }}
+  {% include 'includes/navigation.html' %}
 
-    <a href="{% url 'restaurant:dish-delete' pk=dish.id %}" class="btn btn-danger my-3">
-      Delete
-    </a>
-    <a href="{% url 'restaurant:dish-update' pk=dish.id %}" class="btn btn-secondary my-3">
-      Update
-    </a>
-  </h1>
+  <section>
+    <div class="page-header min-vh-200">
+      <div class="container">
+        <div class="row">
+          <div
+              class="col-5 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
+            <div class="position-relative h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center"
+                 loading="lazy"></div>
+          </div>
+          <div class="col-6 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
+            <div class="card d-flex blur justify-content-center shadow-lg my-sm-0 my-sm-6 mt-8 mb-5">
+              <div class="card-header p-5 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+                <div class="bg-gradient-primary shadow-primary border-radius-lg p-3">
+                  <h3 class="text-white text-center mb-0">{{ dish.name }}</h3>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="text-center">
+                  <a href="{% url 'restaurant:dish-update' pk=dish.id %}" class="btn btn-secondary my-3 w-40">
+                    Update
+                  </a>
+                  <a href="{% url 'restaurant:dish-delete' pk=dish.id %}" class="btn btn-danger my-3 w-40">
+                    Delete
+                  </a>
 
-  <p>Dish type: <strong>{{ dish.dish_type.name }}</strong></p>
-  <p>Description: <strong>{{ dish.description }}</strong></p>
-  <p>Price: <strong>{{ dish.price }}</strong></p>
-  <h4 class="mt-4">Cooks</h4>
-  <hr>
-  <ul>
-    {% for cook in dish.cooks.all %}
-      <li>{{ cook.username }} ({{ cook.first_name }} {{ cook.last_name }})</li>
-    {% endfor %}
-  </ul>
+                </div>
+                <div class="text-left my-3">
+                  <p>Dish type: <strong>{{ dish.dish_type.name }}</strong></p>
+                  <p>Description: <strong>{{ dish.description }}</strong></p>
+                  <p>Price: <strong>{{ dish.price }}</strong></p>
+                  <h4 class="mt-4">Cooks</h4>
+
+
+                </div>
+                <ul class="text-left">
+                  {% for cook in dish.cooks.all %}
+                    <li style="margin-right: 20px">{{ cook.username }} ({{ cook.first_name }} {{ cook.last_name }})</li>
+                  {% endfor %}
+                  {% if dish in user.dishes.all %}
+                    <a href="{% url 'restaurant:toggle-dish-assign' pk=dish.id %}" class="btn btn-danger my-3">
+                      Delete me from this dish
+                    </a>
+                  {% else %}
+                    <a href="{% url 'restaurant:toggle-dish-assign' pk=dish.id %}" class="btn btn-success my-3">
+                      Assign me to this dish
+                    </a>
+                  {% endif %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock %}

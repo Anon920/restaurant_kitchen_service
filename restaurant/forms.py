@@ -38,10 +38,10 @@ class CookCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = Cook
         fields = UserCreationForm.Meta.fields + (
-            "years_of_experience",
             "first_name",
             "last_name",
             "email",
+            "years_of_experience",
         )
 
     def clean_years_of_experience(self):
