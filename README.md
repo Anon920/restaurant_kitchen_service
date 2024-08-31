@@ -1,5 +1,5 @@
-**Restaurant kitchen service
-**
+**Restaurant kitchen service**
+
 
 This is a site that implements a kitchen management service for restaurants.
 
