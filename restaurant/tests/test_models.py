@@ -40,3 +40,4 @@ class ModelTestCase(TestCase):
             price=10,
         )
         self.assertEqual(str(dish), f"{dish.name} ({dish_type.name})")
+
