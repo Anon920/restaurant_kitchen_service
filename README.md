@@ -2,6 +2,16 @@
 
 ### This is a site that implements a kitchen management service for restaurants.
 
+[Restaurant Kitchen service deploy to Render](https://restaurant-kitchen-service-84l5.onrender.com/)
+
+```shell
+Login: test_user32
+```
+
+```shell
+password: qwerty987
+```
+
 ## Installing / Getting started
 
 ### Python3 must be already installed
