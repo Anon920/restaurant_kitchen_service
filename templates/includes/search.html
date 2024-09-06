@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% load crispy_forms_filters %}
+<div class="container">
+  <div class="justify-content-center">
+    <form action="" method="get" class="form-inline">
+      <div class="input-group input-group-dynamic">
+        {{ search_form|crispy }}
+        <input class="btn btn-secondary" type="submit" value="🔎">
+      </div>
+    </form>
+  </div>
+</div>

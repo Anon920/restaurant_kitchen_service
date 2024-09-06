@@ -26,57 +26,49 @@
   </div>
   <div class="card card-body mx-3 mx-md-4 mt-n6 mb-7 pt-5">
     <div class="container">
-      <div class="justify-content-center">
-        <form action="" method="get" class="form-inline">
-          <div class="input-group input-group-dynamic">
-            {{ search_form|crispy }}
-            <input class="btn btn-secondary" type="submit" value="🔎">
-          </div>
-        </form>
-      </div>
-    </div>
-
-
-
-    {% if dish_type_list %}
-      <div class="card-body">
-        <table class="table">
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Update</th>
-            <th>Delete</th>
-          </tr>
-
-          {% for dish_type in dish_type_list %}
+      {% include "includes/search.html" %}
+      {% if dish_type_list %}
+        <div class="card-body">
+          <table class="table">
             <tr>
-              <td>
-                {{ dish_type.id }}
-              </td>
-              <td>
-                {{ dish_type.name }}
-              </td>
-              <td>
-                <a href="{% url 'restaurant:dish-type-update' pk=dish_type.id %}">
-                  Update
-                </a>
-              </td>
-              <td>
-                <a style="color: red"
-                   href="{% url 'restaurant:dish-type-delete' pk=dish_type.id %}">
-                  Delete
-                </a>
-              </td>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Update</th>
+              <th>Delete</th>
             </tr>
-          {% endfor %}
-        </table>
-      </div>
 
-    {% else %}
-      <p>There are no dish type in the service.</p>
-    {% endif %}
-    {% block pagination %}
-      {% include "includes/pagination.html" %}
-    {% endblock %}
+            {% for dish_type in dish_type_list %}
+              <tr>
+                <td>
+                  {{ dish_type.id }}
+                </td>
+                <td>
+                  {{ dish_type.name }}
+                </td>
+                <td>
+                  <a href="{% url 'restaurant:dish-type-update' pk=dish_type.id %}">
+                    Update
+                  </a>
+                </td>
+                <td>
+                  <a style="color: red"
+                     href="{% url 'restaurant:dish-type-delete' pk=dish_type.id %}">
+                    Delete
+                  </a>
+                </td>
+              </tr>
+            {% endfor %}
+          </table>
+        </div>
+
+      {% else %}
+        <div class="p-3 text-center">
+          <h4 class="text-gradient text-danger">There are no dish type in the service.</h4>
+        </div>
+      {% endif %}
+      {% block pagination %}
+        {% include "includes/pagination.html" %}
+      {% endblock %}
+    </div>
   </div>
 {% endblock %}

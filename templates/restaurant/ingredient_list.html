@@ -27,15 +27,7 @@
   <div class="card card-body mx-3 mx-md-4 mt-n6 mb-7 pt-5">
     {% if ingredient_list %}
       <div class="container">
-      <div class="p-2 text-center">
-        <form action="" method="get" class="form-inline">
-          <div class="input-group input-group-dynamic">
-            {{ search_form|crispy }}
-            <input class="btn btn-secondary" type="submit" value="🔎">
-          </div>
-        </form>
-      </div>
-
+      {% include "includes/search.html" %}
       <div class="card-body">
         <table class="table">
           <tr>
