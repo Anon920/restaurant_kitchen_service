@@ -114,15 +114,15 @@ class IngredientListView(LoginRequiredMixin, generic.ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(IngredientListView, self).get_context_data(**kwargs)
-        name = self.request.GET.get("name", "")
-        context["search_form"] = IngredientSearchForm(initial={"name": name})
+        ingredient = self.request.GET.get("ingredient", "")
+        context["search_form"] = IngredientSearchForm(initial={"ingredient": ingredient})
         return context
 
     def get_queryset(self):
         queryset = Ingredient.objects.select_related("ingredient").order_by("name")
         form = IngredientSearchForm(self.request.GET)
         if form.is_valid():
-            return queryset.filter(name__icontains=form.cleaned_data["name"])
+            return queryset.filter(name__icontains=form.cleaned_data["ingredient"])
         return queryset
 
 
