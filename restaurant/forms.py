@@ -80,8 +80,9 @@ class CookSearchForm(forms.Form):
 
 
 class IngredientForm(forms.ModelForm):
-    cooks = forms.ModelMultipleChoiceField(
-        queryset=Cook.objects.all(),
+    dishes = forms.ModelMultipleChoiceField(
+        required=None,
+        queryset=Dish.objects.all(),
         widget=forms.CheckboxSelectMultiple(),
     )
 

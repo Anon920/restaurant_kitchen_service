@@ -114,12 +114,12 @@ class IngredientListView(LoginRequiredMixin, generic.ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(IngredientListView, self).get_context_data(**kwargs)
-        ingredient = self.request.GET.get("ingredient", "")
-        context["search_form"] = IngredientSearchForm(initial={"ingredient": ingredient})
+        name = self.request.GET.get("ingredient", "")
+        context["search_form"] = IngredientSearchForm(initial={"ingredient": name})
         return context
 
     def get_queryset(self):
-        queryset = Ingredient.objects.select_related("ingredient").order_by("name")
+        queryset = Ingredient.objects.order_by("name")
         form = IngredientSearchForm(self.request.GET)
         if form.is_valid():
             return queryset.filter(name__icontains=form.cleaned_data["ingredient"])
@@ -129,7 +129,7 @@ class IngredientListView(LoginRequiredMixin, generic.ListView):
 class IngredientCreateView(LoginRequiredMixin, generic.CreateView):
     model = Ingredient
     form_class = IngredientForm
-    success_url = reverse_lazy("")
+    success_url = reverse_lazy("restaurant:ingredient-list")
 
 
 class IngredientUpdateView(LoginRequiredMixin, generic.UpdateView):
