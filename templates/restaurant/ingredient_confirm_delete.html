@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+  {% include 'includes/navigation.html' %}
+
+  <section>
+    <div class="page-header min-vh-100 d-flex justify-content-center align-items-center">
+      <div class="container my-auto">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-6">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <div class="card-header p-5 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+                <div class="bg-gradient-danger shadow-primary border-radius-lg p-3">
+                  <h3 class="text-white text-center mb-0">Delete {{ ingredient.name }}?</h3>
+                </div>
+              </div>
+              <div class="card-body text-center">
+                <form action="" method="post">
+                  {% csrf_token %}
+                  <input class="btn bg-gradient-warning my-3" type="submit" value="Yes, delete this ingredient">
+                  <br>
+                  <a href="{% url 'restaurant:ingredient-list' %}" class="btn btn-secondary my-3">CANCEL</a>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
