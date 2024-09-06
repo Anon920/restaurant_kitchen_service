@@ -25,17 +25,17 @@
     </div>
   </div>
   <div class="card card-body mx-3 mx-md-4 mt-n6 mb-7 pt-5">
-    {% if dish_type_list %}
+    {% if ingredient_list %}
       <div class="container">
-        <div class="p-3 text-center">
-          <form action="" method="get" class="form-inline">
-            <div class="input-group input-group-dynamic">
-              {{ search_form|crispy }}
-              <input class="btn btn-secondary" type="submit" value="🔎">
-            </div>
-          </form>
-        </div>
+      <div class="p-2 text-center">
+        <form action="" method="get" class="form-inline">
+          <div class="input-group input-group-dynamic">
+            {{ search_form|crispy }}
+            <input class="btn btn-secondary" type="submit" value="🔎">
+          </div>
+        </form>
       </div>
+
       <div class="card-body">
         <table class="table">
           <tr>
@@ -45,22 +45,22 @@
             <th>Delete</th>
           </tr>
 
-          {% for dish_type in dish_type_list %}
+          {% for ingredient in ingredient_list %}
             <tr>
               <td>
-                {{ dish_type.id }}
+                {{ ingredient.id }}
               </td>
               <td>
-                {{ dish_type.name }}
+                {{ ingredient.name }}
               </td>
               <td>
-                <a href="{% url 'restaurant:ingredient-update' pk=dish_type.id %}">
+                <a href="{% url 'restaurant:ingredient-update' pk=ingredient.id %}">
                   Update
                 </a>
               </td>
               <td>
                 <a style="color: red"
-                   href="{% url 'restaurant:ingredient-delete' pk=dish_type.id %}">
+                   href="{% url 'restaurant:ingredient-delete' pk=ingredient.id %}">
                   Delete
                 </a>
               </td>
@@ -77,5 +77,6 @@
     {% block pagination %}
       {% include "includes/pagination.html" %}
     {% endblock %}
+    </div>
   </div>
 {% endblock %}
