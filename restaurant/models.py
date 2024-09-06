@@ -36,11 +36,22 @@ class Cook(AbstractUser):
         super(Cook, self).delete(*args, **kwargs)
 
 
+class Ingredient(models.Model):
+    name = models.CharField(max_length=100)
+
+    class Meta:
+        ordering = ["name"]
+
+    def __str__(self):
+        return self.name
+
+
 class Dish(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
     dish_type = models.ForeignKey(DishType, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=5, decimal_places=2)
+    ingredients = models.ManyToManyField(Ingredient)
     cooks = models.ManyToManyField(
         settings.AUTH_USER_MODEL,
         related_name="dishes"
@@ -53,3 +64,4 @@ class Dish(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.dish_type})"
+
