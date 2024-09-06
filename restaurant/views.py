@@ -135,12 +135,12 @@ class IngredientCreateView(LoginRequiredMixin, generic.CreateView):
 class IngredientUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Ingredient
     form_class = IngredientForm
-    success_url = reverse_lazy("")
+    success_url = reverse_lazy("restaurant:ingredient-list")
 
 
 class IngredientDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Ingredient
-    success_url = reverse_lazy("")
+    success_url = reverse_lazy("restaurant:ingredient-list")
 
 
 @login_required
