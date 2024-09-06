@@ -41,6 +41,8 @@ class Ingredient(models.Model):
 
     class Meta:
         ordering = ["name"]
+        verbose_name = "ingredient"
+        verbose_name_plural = "ingredients"
 
     def __str__(self):
         return self.name
