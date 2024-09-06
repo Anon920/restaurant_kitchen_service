@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from restaurant.models import Dish, Cook, DishType
+from restaurant.models import Dish, Cook, DishType, Ingredient
 
 
 @admin.register(Cook)
@@ -34,3 +34,4 @@ class CarAdmin(admin.ModelAdmin):
 
 
 admin.site.register(DishType)
+admin.site.register(Ingredient)
