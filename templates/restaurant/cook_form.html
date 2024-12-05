@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+
+
+{% block content %}
+
+  {% include 'includes/navigation.html' %}
+
+  <section>
+    <div class="position-static h-200 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center"
+         loading="lazy"></div>
+    <div class="card d-flex blur justify-content-center shadow-lg my-sm-0 my-sm-6 mt-8 mb-5">
+      <div class="card-header p-5 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+        <div class="bg-gradient-primary shadow-primary border-radius-lg p-3">
+          <h3 class="text-white text-center mb-0">Cook profile</h3>
+        </div>
+        <div class="card-body">
+          <p class="pb-3">
+          <form action="" method="post" class="text-start" role="form">
+            <div class="input-group input-group-dynamic">
+              <label class="form">
+                {% csrf_token %}
+                {{ form|crispy }}
+              </label>
+            </div>
+            <input type="submit" value="Submit" class="btn btn-primary">
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
